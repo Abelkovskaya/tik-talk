@@ -1,1 +1,47 @@
-<p>login-page works!</p>
+<form 
+    class="login-form" 
+    [formGroup] = "form"
+    (ngSubmit)="onSubmit()"
+    >
+
+    <h1 class="h1 mb60">Вход</h1>
+
+    <label class="tt-control-label mb16">
+        Телеграм username
+        <input 
+            formControlName="username"
+            class="tt-input" 
+            type="text" 
+            placeholder="Введите логин">
+    </label>  
+
+    @if (form.controls.username.invalid && form.controls.username.touched) {
+        <span class="error">Введите логин - минимум три символа</span>
+    }
+
+    <label class="tt-control-label mb32">
+        Пароль
+        <input 
+            formControlName="password"
+            class="tt-input" 
+            type="text" 
+            placeholder="Введите пароль">
+    </label>    
+
+    @if (form.controls.password.invalid && form.controls.password.touched) {
+        <span class="error">Введите пароль - минимум шесть символов</span>
+    }
+
+    @if (errorMessage() ){
+        <span class="error">{{ errorMessage() }}</span>
+    }
+
+    <button 
+        class="btn btn-shadow" 
+        [disabled]="isLoading()"
+        >
+        {{ isLoading() ? 'Входим...' : 'Войти' }}
+    </button>
+
+</form>    
+<img src="/assets/images/logo-big.svg" alt="logo">
