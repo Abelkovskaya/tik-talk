@@ -93,6 +93,8 @@ body{
 }
 
 .tt-input{
+
+    
     display: block;
     width: 100%;
     border: 1px solid var(--light-color);
@@ -105,5 +107,16 @@ body{
     font-family: 'JetBrains Mono', monospace;
     margin-top: 8px;
     color: var(--light-color);
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--dark-color) inset !important;
+    -webkit-text-fill-color: var(--light-color) !important;
+    caret-color: var(--light-color); 
+    transition: background-color 5000s ease-in-out 0s; 
+  }
+
 }
 

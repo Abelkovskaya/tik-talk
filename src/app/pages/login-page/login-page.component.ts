@@ -15,6 +15,7 @@ export class LoginPageComponent {
   private router = inject(Router);
   errorMessage = signal<string | null>(null);
   isLoading = signal(false);
+  isPasswordVisible = signal<boolean>(false);
 
   form = new FormGroup({
     username: new FormControl('', { nonNullable: true, validators: Validators.required }),
