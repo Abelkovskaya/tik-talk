@@ -45,3 +45,22 @@
     transition: 0.2s ease;
 
 }
+
+.to-subscribers{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.to-subscribers-link{
+    color: var(--primary-color);
+    padding: 0px 0px 0px 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.to-subscribers-icon{
+    width: 16px;
+    height: 16px;
+    color: var(--primary-color);
+}
