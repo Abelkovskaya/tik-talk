@@ -1,0 +1,47 @@
+:host{
+    display: block;
+    padding: 20px 12px;
+}
+
+.main-menu-list{
+    display: grid;
+    grid-gap: 8px;
+    list-style: none;
+}
+
+.menu-item{
+    display: grid;
+    grid-template-columns: 16px 1fr max-content;
+    grid-gap: 12px;
+    width: 100%;
+    padding: 16px 12px;
+    cursor: pointer;
+    color: var(--light-color);
+    border: none;
+    background: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    align-items: center;
+    text-align: left;
+    transition: 0.3s ease;
+
+
+    &:hover,
+    &:focus-visible{
+        background-color: var(--dark-hover-color);
+        color: var(--primary-color);
+        border-radius: 2px;
+
+        .menu-item svg{
+            color: var(--primary-color);
+        }
+    }
+}
+
+.menu-item svg{
+    width: 16px;
+    height: 16px;
+    transition: 0.2s ease;
+
+}

@@ -5,7 +5,8 @@
     --dark-color: #000000;
     --light-color: #ffffff;
     --primary-color: #AE7AFF;
-    --gray-color: #5F646D
+    --gray-color: #5F646D;
+    --dark-hover-color: #2A2A2A;
 }
 
 *,
@@ -85,6 +86,18 @@ body{
     font-weight: 300;
 }
 
+.medium-text{
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.white-75-opacity{
+    color: #FFFFFFBF;
+}
+
+
 .tt-control-label{
     font-weight: 700;
     font-size: 12px;
@@ -119,4 +132,5 @@ body{
   }
 
 }
+
 

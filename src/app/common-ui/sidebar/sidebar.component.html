@@ -1,1 +1,26 @@
-<p>sidebar works!</p>
+<img 
+    src="/assets/images/Logo-Tik-Talk-small.svg" 
+    class="ml16 mb20"
+    alt="logo"
+>
+
+<nav>
+    <ul class="main-menu-list">
+        @for(item of menuItems; track item.link){
+            <li>
+                <button class="menu-item">
+                    <svg [icon]="item.icon"></svg>
+                    <span>{{ item.label }}</span>
+                </button>
+            </li>
+        }
+    </ul>    
+</nav>    
+
+<p class="medium-text mb-20 ml12 mt20 white-75-opacity">Подписчики</p>
+
+<app-subscriber-card></app-subscriber-card>
+
+
+
+
