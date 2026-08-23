@@ -1,6 +1,9 @@
 :host{
     display: block;
     padding: 20px 12px;
+    position: relative;
+    background-color: var(--dark-color);
+    height: 100dvh;
 }
 
 .main-menu-list{
@@ -63,4 +66,49 @@
     width: 16px;
     height: 16px;
     color: var(--primary-color);
+}
+
+.sidebar__footer{
+    position: absolute;
+    bottom: 20px;
+    left: 12px;
+    right: 12px;
+    background-color: var(--dark-hover-color);
+    border-radius: 2px;
+    padding: 4px 12px;
+    display: grid;
+    grid-template-columns: 32px 1fr 16px;
+    grid-gap: 12px;
+    align-items: center;
+
+    img{
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+
+    .username-text{
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    .settings-btn{
+        cursor: pointer;
+        display: block;
+        text-decoration: none;
+        width: 16px;
+        height: 16px;
+
+
+        img{
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+.to-settings-icon{
+    color: var(--primary-color);
+    width: 16px;
+    height: 16px;
 }
