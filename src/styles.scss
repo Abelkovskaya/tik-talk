@@ -7,6 +7,7 @@
     --primary-color: #AE7AFF;
     --gray-color: #5F646D;
     --dark-hover-color: #2A2A2A;
+    --light-transparent-color: rgba(255, 255, 255, 0.75)
 }
 
 *,
@@ -150,4 +151,35 @@ body{
     line-height: 1.5;
 }
 
+.tt-form-input{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    border:none;
+    border-bottom: 1px solid var(--light-color);
+    height: 33px;
+    background: none;
+    color: var(--light-color);
 
+    &:focus-visible{
+        outline: 1px solid var(--dark-color);
+    }
+}
+
+.tt-form-label__text{
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--light-transparent-color);
+}
+
+.tt-form-label{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tt-textarea{
+    height: 84px;
+    resize: none;
+}

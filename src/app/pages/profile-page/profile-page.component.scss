@@ -1,3 +1,9 @@
+.profile-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
 .profile-page__header{
     display: flex;
     align-items: center;

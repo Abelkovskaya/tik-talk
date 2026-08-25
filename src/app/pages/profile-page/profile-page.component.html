@@ -1,3 +1,5 @@
+<div class="profile-wrapper">
+
 @if(profile$ | async; as profile){
 
     <header class="profile-page__header">
@@ -6,7 +8,7 @@
         >
         </app-profile-header>
 
-        <a class="btn to-settings-btn" [routerLink] = "['settings']">
+        <a class="btn to-settings-btn" [routerLink] = "['/settings']">
             Редактировать
             <svg icon="settings" class="to-settings-icon"></svg>
         </a>
@@ -45,3 +47,5 @@
     </main>    
 
 }
+
+</div>

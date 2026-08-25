@@ -1,0 +1,29 @@
+:host{
+    display: grid;
+    grid-gap: 48px;
+    grid-template-columns: 322px 1fr;
+}
+
+.profile-form__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 2px;
+    border: 1px solid var(--light-color);
+    background-color: var(--dark-color);
+    padding: 32px;
+    height: calc(100dvh - 48px);
+}
+
+.profile-form{
+    color: var(--light-color);
+    display: grid;
+    grid-gap: 20px;
+}
+
+.two-columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
