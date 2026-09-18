@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
 import { ProfileService } from '../../data/services/profile.service';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs' ;
+import { switchMap, map } from 'rxjs' ;
 import { toObservable } from '@angular/core/rxjs-interop';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -37,4 +37,9 @@ export class ProfilePageComponent {
         return this.profileService.getAccount(id);
       })
     )
+
+  isMyProfile$ = this.route.params
+    .pipe(
+      map(({id}) => id === 'me')
+    )  
 }

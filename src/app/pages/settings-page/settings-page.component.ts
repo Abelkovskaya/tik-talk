@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, ViewChild } from '@angular/core';
 import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../data/services/profile.service'
@@ -16,6 +16,9 @@ export class SettingsPageComponent {
 
   fb = inject(FormBuilder)
   profileService = inject(ProfileService);
+
+  @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
+
   router = inject(Router);
 
   form = this.fb.group({
@@ -37,19 +40,37 @@ export class SettingsPageComponent {
     })
   }
 
-  onSave(){
+  ngAfterViewInit(){
+    
+  }
+
+  async onSave(){
     this.form.markAllAsTouched()
     this.form.updateValueAndValidity();
 
     if(this.form.invalid) return;
 
-    //@ts-ignore
-    firstValueFrom(this.profileService.patchProfile({
-      ...this.form.value,
-      stack: this.splitStack(this.form.value.stack)
-    }));
+    try {
+      if(this.avatarUploader.avatar){
+        const updated = await firstValueFrom(
+          this.profileService.uploadAvatar(this.avatarUploader.avatar)
+        );
 
-    this.router.navigate(['/profile/me']);
+        if(updated?.avatarUrl){
+          await this.waitForImage(updated.avatarUrl);
+        }
+      }
+
+      //@ts-ignore
+      await firstValueFrom(this.profileService.patchProfile({
+        ...this.form.value,
+        stack: this.splitStack(this.form.value.stack)
+      }));
+
+      this.router.navigate(['/profile/me']);
+    } catch (err) {
+      console.error('Не удалось сохранить профиль', err);
+    }
   }
 
   splitStack(stack: string | null | string[] | undefined): string[] {
@@ -66,4 +87,27 @@ export class SettingsPageComponent {
     return stack;
   }
 
+  private waitForImage(url: string, maxAttempts = 10, delayMs = 500): Promise<void> {
+    return new Promise((resolve) => {
+      let attempts = 0;
+
+      const tryLoad = () => {
+        attempts++;
+        const img = new Image();
+
+        img.onload = () => resolve();
+        img.onerror = () => {
+          if(attempts >= maxAttempts){
+            resolve();
+            return;
+          }
+          setTimeout(tryLoad, delayMs);
+        };
+
+        img.src = `${url}?t=${Date.now()}`;
+      };
+
+      tryLoad();
+    });
+  }
 }
